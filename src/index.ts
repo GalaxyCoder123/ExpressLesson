@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { spaceshipRouter } from './routers/spaceship-router';
+import { messageRouter } from './routers/message-router';
 
 const app = express();
 const port = process.env.SHIP_PORT || 8080;
@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/dummy', (req, res) => {
-    res.send('duummy data updated');
+    res.send('dummy data updated');
 });
 
 app.use((req, res, next) => {
@@ -44,7 +44,7 @@ app.use((req, resp, next) => {
 /**
  * Register Routers
  */
-app.use('/spaceships', spaceshipRouter);
+app.use('/message', messageRouter);
 
 // start up the application
 app.listen(port, () => {
