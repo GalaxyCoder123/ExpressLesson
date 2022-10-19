@@ -15,8 +15,8 @@ export const messageRouter = express.Router();
  messageRouter.get('/', [
   // authMiddleware(['admin']),
   async (request: Request, response: Response) => {
-    const id = request.params.user;
-    const userWhoRecieves = request.params.userWhoRecieves;
+    const id = String(request.query.user);
+    const userWhoRecieves = String(request.query.userWhoRecieves);
     const messages = await spaceshipDao.findAllMessages(id, userWhoRecieves);
     response.json(messages);
   }]);
