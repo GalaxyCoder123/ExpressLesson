@@ -3,7 +3,10 @@ import { Spaceship } from "../model/spaceship";
 
 export async function findAllMessages(user: string, userWhoRecieves: string) {
   const key = user + "/" + userWhoRecieves;
-  const allMessagesSent = allMessages.get(key);
+  let allMessagesSent = allMessages.get(key);
+  if (allMessagesSent === undefined){
+    allMessagesSent = [];
+  }
   return allMessagesSent;
 
 };
